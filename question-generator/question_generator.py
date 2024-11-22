@@ -141,7 +141,7 @@ Example Input:
         self.llm = ChatUpstage(
             model="solar-1-mini-chat",
             #model="gpt-4o",
-            temperature=temperature
+            temperature=temperaturex    
         )
         
         global_template = """
