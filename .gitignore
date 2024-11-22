@@ -1,1 +1,63 @@
-.venv
+# Python 가상환경 폴더
+venv/
+
+# Django 데이터베이스 파일
+script_editor/db.sqlite3
+
+# Django 설정 관련
+script_editor/local_settings.py
+
+# 환경 설정 파일들
+*.env
+
+# 미디어 파일들 (사용자 업로드 등)
+script_editor/media/
+
+# 정적 파일들
+script_editor/staticfiles/
+
+# Python 파일들 및 컴파일된 바이너리 파일들
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# 테스트 커버리지, 리포트 및 설정 파일
+.coverage
+*.cover
+coverage/
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE 관련 파일들
+.idea/
+.vscode/
+*.swp
+*~
+
+# 로그 파일들
+*.log
+
+# 임시 파일들
+*.tmp
+*.bak
+*.old
+*.orig
+*.DS_Store
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Linux
+*.lock
+
+
+yarn-error.log*
