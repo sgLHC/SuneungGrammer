@@ -72,8 +72,11 @@ class QuestionAnalysisAgent:
         ]
 
         # ReAct 프롬프트 템플릿 수정
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", """You must use ALL of the following tools in sequence to analyze the given English question:
+        prompt = ChatPromptTemplate.from_messages(
+            [
+                (
+                    "system",
+                    """You must use ALL of the following tools in sequence to analyze the given English question:
 
 {tools}
 
@@ -101,10 +104,12 @@ Grammar: [grammar analysis]
 Question Type: [question type]
 Topic: [topic analysis]
 Difficulty: [difficulty analysis]
-```"""),
-            ("user", "{input}"),
-            ("assistant", "{agent_scratchpad}")
-        ])
+```""",
+                ),
+                ("user", "{input}"),
+                ("assistant", "{agent_scratchpad}"),
+            ]
+        )
 
         # ReAct 에이전트 생성
         self.agent = create_react_agent(llm=self.llm, tools=self.tools, prompt=prompt)
@@ -162,30 +167,41 @@ class QuestionGeneratorAgent:
                     - grammar_analysis: 문법 분석 내용
                     - question_type: 문제 유형
             """
-            # 입력이 문자열인 경우 딕셔너리로 변환
             if isinstance(analysis, str):
                 try:
                     import ast
+
                     analysis = ast.literal_eval(analysis)
                 except:
-                    analysis = {"grammar_analysis": analysis, "question_type": "grammar"}
-            
+                    analysis = {
+                        "grammar_analysis": analysis,
+                        "question_type": "grammar",
+                    }
+
             prompt = PromptTemplate(
                 input_variables=["grammar_analysis", "question_type"],
-                template="""다음 문법 분석과 문제 유형을 바탕으로 새로운 문제를 생성해주세요:
-                문법 분석: {grammar_analysis}
-                문제 유형: {question_type}
+                template="""Based on the following grammar analysis and question type, generate a new English question:
+                Grammar Analysis: {grammar_analysis}
+                Question Type: {question_type}
                 
-                비슷한 문법 구조와 난이도를 가진 새로운 문제를 생성해주세요."""
+                Please create a new English question that:
+                1. Follows the same grammatical structure and difficulty level
+                2. Matches the specified question type exactly
+                3. Uses natural, academic English appropriate for high school students
+                4. Includes clear instructions in English
+                
+                Generate the complete question in English, including any necessary context and answer choices.""",
             )
             chain = prompt | self.llm
-            
-            result = chain.invoke({
-                "grammar_analysis": analysis.get("grammar_analysis", ""),
-                "question_type": analysis.get("question_type", "grammar")
-            })
-            
-            return result.content if hasattr(result, 'content') else str(result)
+
+            result = chain.invoke(
+                {
+                    "grammar_analysis": analysis.get("grammar_analysis", ""),
+                    "question_type": analysis.get("question_type", ""),
+                }
+            )
+
+            return result.content if hasattr(result, "content") else str(result)
 
         @tool
         def generate_topic_question(analysis: dict) -> str:
@@ -193,29 +209,45 @@ class QuestionGeneratorAgent:
             Args:
                 analysis (dict): 주제 분석 결과가 담긴 딕셔너리
                     - topic_analysis: 주제 분석 내용
+                    - question_type: 문제 유형
             """
-            # 입력이 문자열인 경우 딕셔너리로 변환
             if isinstance(analysis, str):
                 try:
                     import ast
+
                     analysis = ast.literal_eval(analysis)
                 except:
                     analysis = {"topic_analysis": analysis}
-            
+
             prompt = PromptTemplate(
-                input_variables=["topic_analysis"],
-                template="""다음 주제 분석을 바탕으로 유사한 새로운 지문과 문제를 생성해주세요:
-                주제 분석: {topic_analysis}
+                input_variables=["topic_analysis", "question_type"],
+                template="""Based on the following topic analysis and question type, generate a new English passage and question:
+                Topic Analysis: {topic_analysis}
+                Question Type: {question_type}
                 
-                비슷한 주제와 난이도를 가진 새로운 지문과 그에 따른 문제를 생성해주세요."""
+                Please create:
+                1. A new English passage that:
+                   - Covers a similar topic and main ideas
+                   - Uses appropriate academic language
+                   - Has similar length and complexity
+                
+                2. A question that:
+                   - Matches the specified question type exactly
+                   - Tests understanding of similar concepts
+                   - Includes clear instructions and answer choices in English
+                
+                Generate both the passage and question in English.""",
             )
             chain = prompt | self.llm
-            
-            result = chain.invoke({
-                "topic_analysis": analysis.get("topic_analysis", "")
-            })
-            
-            return result.content if hasattr(result, 'content') else str(result)
+
+            result = chain.invoke(
+                {
+                    "topic_analysis": analysis.get("topic_analysis", ""),
+                    "question_type": analysis.get("question_type", ""),
+                }
+            )
+
+            return result.content if hasattr(result, "content") else str(result)
 
         @tool
         def adapt_difficulty(question: str, target_level: str) -> str:
@@ -237,8 +269,11 @@ class QuestionGeneratorAgent:
         ]
 
         # ReAct 프롬프트 템플릿도 수정
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are an AI assistant that helps generate English questions.
+        prompt = ChatPromptTemplate.from_messages(
+            [
+                (
+                    "system",
+                    """You are an AI assistant that helps generate English questions.
             You have access to the following tools:
             
             {tools}
@@ -246,24 +281,22 @@ class QuestionGeneratorAgent:
             When analyzing questions, first use analyze_grammar, then identify_question_type, and finally analyze_topic.
             When generating questions, use the appropriate tool based on the question type.
             
-            Available tools: {tool_names}"""),
-            ("user", "{input}"),
-            ("assistant", "{agent_scratchpad}")
-        ])
+            Available tools: {tool_names}""",
+                ),
+                ("user", "{input}"),
+                ("assistant", "{agent_scratchpad}"),
+            ]
+        )
 
         # ReAct 에이전트 생성
-        self.agent = create_react_agent(
-            llm=self.llm,
-            tools=self.tools,
-            prompt=prompt
-        )
-        
+        self.agent = create_react_agent(llm=self.llm, tools=self.tools, prompt=prompt)
+
         self.agent_executor = AgentExecutor(
             agent=self.agent,
             tools=self.tools,
             verbose=True,
             max_iterations=3,
-            handle_parsing_errors=True
+            handle_parsing_errors=True,
         )
 
     def generate(self, analysis: dict, target_level: str = "수능") -> dict:
@@ -275,18 +308,16 @@ class QuestionGeneratorAgent:
             # topic_analysis가 있는지 확인하고 필요한 형식으로 변환
             topic_data = {
                 "analysis": {
-                    "topic_analysis": analysis.get("topic_analysis", 
-                                    analysis.get("analysis", "")),
-                    "question_type": analysis.get("question_type", "")
+                    "topic_analysis": analysis.get(
+                        "topic_analysis", analysis.get("analysis", "")
+                    ),
+                    "question_type": analysis.get("question_type", ""),
                 }
             }
             base_question = self.tools[1].run(topic_data)
 
         # 난이도 조정 (입력 형식 수정)
-        difficulty_input = {
-            "question": base_question,
-            "target_level": target_level
-        }
+        difficulty_input = {"question": base_question, "target_level": target_level}
         final_question = self.tools[2].run(difficulty_input)
 
         return {
