@@ -1,5 +1,5 @@
 # Python 가상환경 폴더
-venv/
+.venv/
 
 # Django 데이터베이스 파일
 script_editor/db.sqlite3
