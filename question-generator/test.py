@@ -4,6 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain.tools import tool
+from langchain.memory import ConversationBufferMemory
 from typing import List
 
 from dotenv import load_dotenv
@@ -56,7 +57,7 @@ To use a tool, please use the following format:
 
 ```
 
-Thought: Do I need to use a tool? Yes
+Thought: Do I need to use a tool? [Yes/No]
 
 Action: the action to take, should be one of [{tool_names}]
 
@@ -70,7 +71,7 @@ When you have a response to say to the Human, or if you do not need to use a too
 
 ```
 
-Thought: Do I need to use a tool? No
+Thought: Do I need to use a tool? [Yes/No]
 
 Final Answer: [your response here]
 

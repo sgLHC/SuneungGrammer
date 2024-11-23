@@ -1,4 +1,17 @@
 {
-    "0": {"문제 유형": "빈칸", "문제": "이 문장은 빈칸 유형에 해당하는 문제입니다.", "보기":"1,2,3,4,5", "답":"3", "해설": "해설"},
-    "1": {"문제 유형": "어법", "문제": "이 문장은 어법 유형에 해당하는 문제입니다.", "보기":"1,2,3,4,5", "답":"3", "해설": "해설"}
+    "18": {
+        "문제 유형": "글의 목적",
+        "문제": "Hello, everyone! Welcome back to your favorite online channel, With Ethan. As always, I’m trying to make this channel a place that my followers of all ages can enjoy. Recently, in the comments section, there have been some examples of language that is inappropriate for younger viewers. Also, there have been some comments that are not relevant to this channel. These kinds of comments are unacceptable for a channel like this. I would really like to ask that all of my followers keep these things in mind so that we can all enjoy this channel. I always appreciate your time and support. Please keep watching.",
+        "보기": [
+        "1 새로 개설한 온라인 채널을 홍보하려고",
+        "2 온라인 생방송 날짜 변경을 공지하려고",
+        "3 부적절한 댓글을 쓰지 않도록 요청하려고",
+        "4 온라인 채널 구독 연령 제한을 고지하려고",
+        "5 온라인 구독자들의 요청 사항을 공유하려고"
+        ],
+        "어휘": "어휘",
+        "답": "3",
+        "해설": "해설"
+    }
 }
+      

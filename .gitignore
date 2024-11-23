@@ -61,3 +61,23 @@ dmypy.json
 
 
 yarn-error.log*
+
+# ... existing code ...
+
+# Frontend
+frontend/script-editor/node_modules/
+frontend/script-editor/node_modules/.cache/
+frontend/script-editor/node_modules/.cache/*
+frontend/script-editor/.eslintcache
+frontend/script-editor/build/
+frontend/script-editor/dist/
+frontend/script-editor/.env
+frontend/script-editor/.env.local
+frontend/script-editor/.env.development.local
+frontend/script-editor/.env.test.local
+frontend/script-editor/.env.production.local
+
+# npm/yarn logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -50,7 +50,8 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated",  # 기본적으로 모든 API 요청에 인증 필요
+        # "rest_framework.permissions.IsAuthenticated",  # 기본적으로 모든 API 요청에 인증 필요
+        "rest_framework.permissions.AllowAny",
     ),
 }
 
