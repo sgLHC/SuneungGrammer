@@ -39,3 +39,16 @@ class ExampleSentence(models.Model):
 
     def __str__(self):
         return f"Example for {self.rule.tag}: {self.incorrect_sentence[:30]}..."
+
+class QuestionMeta(models.Model):
+    # 수능 영어 문제 메타데이터
+    id = models.IntegerField(primary_key=True)
+    question_type = models.CharField(max_length=100)  # 문제 유형
+    question = models.TextField()              # 문제 본문
+    options = models.TextField()                   # 보기 (콤마로 구분된 텍스트)
+    vocabulary = models.CharField(max_length=100)   # 어휘
+    answer = models.CharField(max_length=10)        # 정답
+    explanation = models.TextField()                # 해설
+
+    def __str__(self):
+        return f"{self.problem_type}: {self.question_text[:50]}"

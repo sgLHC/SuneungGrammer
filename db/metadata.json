@@ -1,17 +1,60 @@
 {
     "18": {
-        "문제 유형": "글의 목적",
-        "문제": "Hello, everyone! Welcome back to your favorite online channel, With Ethan. As always, I’m trying to make this channel a place that my followers of all ages can enjoy. Recently, in the comments section, there have been some examples of language that is inappropriate for younger viewers. Also, there have been some comments that are not relevant to this channel. These kinds of comments are unacceptable for a channel like this. I would really like to ask that all of my followers keep these things in mind so that we can all enjoy this channel. I always appreciate your time and support. Please keep watching.",
-        "보기": [
+      "문제 유형": "글의 목적",
+      "문제": "Hello, everyone! Welcome back to your favorite online channel, With Ethan. As always, I’m trying to make this channel a place that my followers of all ages can enjoy. Recently, in the comments section, there have been some examples of language that is inappropriate for younger viewers. Also, there have been some comments that are not relevant to this channel. These kinds of comments are unacceptable for a channel like this. I would really like to ask that all of my followers keep these things in mind so that we can all enjoy this channel. I always appreciate your time and support. Please keep watching.",
+      "보기": [
         "1 새로 개설한 온라인 채널을 홍보하려고",
         "2 온라인 생방송 날짜 변경을 공지하려고",
         "3 부적절한 댓글을 쓰지 않도록 요청하려고",
         "4 온라인 채널 구독 연령 제한을 고지하려고",
         "5 온라인 구독자들의 요청 사항을 공유하려고"
-        ],
-        "어휘": "어휘",
-        "답": "3",
-        "해설": "해설"
+      ],
+      "어휘": "어휘",
+      "답": "3",
+      "해설": "해설"
+    },
+    
+    "19": {
+      "문제 유형": "글의 분위기/심경",
+      "문제": "Timothy sat at his desk, desperately turning the pages of his science book. His science project was due in a few days and he had no idea where to start. Finally, he closed his book, hit the table, and shouted, “This is impossible!” His sister, Amelia, drawn by the noise, came into his room. “Hey, little brother, can I help?” Timothy explained his situation and Amelia immediately had a solution. She knew that Timothy enjoyed learning about environmental issues and suggested he do a project about climate change. Timothy thought about the idea and agreed that his sister was right. “Oh, Amelia, your idea is fantastic! Thank you. You are the best sister ever!”",
+      "보기": [
+        "1 frustrated → grateful",
+        "2 disappointed → envious",
+        "3 hopeful → thrilled",
+        "4 encouraged → ashamed",
+        "5 fearful → indifferent"
+      ],
+      "어휘": "어휘",
+      "답": "1",
+      "해설": "해설"
+    },
+    "20": {
+      "문제 유형": "글의 주장",
+      "문제": "As the world seems to be increasingly affected by the ever-expanding influence of machines in general and artificial intelligence (AI) specifically, many begin to imagine, with either fear or anticipation, a future with a diminished role for human decision making. Whether it be due to the growing presence of AI assistants or the emergence of self-driving cars, the necessity of the role of humans as the decision makers would appear to be in decline. After all, our capacity for making mistakes is well documented. However, perhaps the saving grace of human determination is to be found here as well. Little evidence exists that suggests modern AI’s infallibility or predicts it in the future. It is crucial that, in light of humanity’s acceptance of our own fallibility, we utilize our capacity to overcome such failures to position ourselves as the overseers of AI’s own growth and applications for the foreseeable future.",
+      "보기": [
+        "1 인간은 AI의 발전 가능성과 불안정성을 동시에 고려해야 한다.",
+        "2 인간은 창의력을 향상시키기 위해 AI에 의존하지 말아야 한다.",
+        "3 실수를 보완하기 위해 인간은 AI의 활용 방안을 모색해야 한다.",
+        "4 AI에 대한 학습을 통해 인간은 미래 사회 변화에 대비해야 한다.",
+        "5 AI의 영향력 확산에 대비하여 인간은 오류 극복 능력을 활용해야 한다."
+      ],
+      "어휘": "어휘",
+      "답": "5",
+      "해설": "해설"
+    },
+    "21": {
+      "문제 유형": "함의 추론",
+      "문제": "To balance the need for breadth (everyone feels a bit burned out) and depth (some are so burned out, they can no longer do their jobs), we ought to think of burnout not as a state but as a spectrum. In most public discussion of burnout, we talk about workers who “are burned out,” as if that status were black and white. A black-and-white view cannot account for the variety of burnout experience, though. If there is a clear line between burned out and not, as there is with a lightbulb, then we have no good way to categorize people who say they are burned out but still manage to do their work competently. Thinking about burnout as a spectrum solves this problem; those who claim burnout but are not debilitated by it are simply dealing with a partial or less-severe form of it. They are experiencing burnout without being burned out. Burnout hasn’t had the last word.",
+      "보기": [
+        "1 Public discussion of burnout has not reached an end.",
+        "2 There still exists room for a greater degree of exhaustion.",
+        "3 All-or-nothing criteria are applicable to burnout symptoms.",
+        "4 Exhaustion is overcome in different ways based on its severity.",
+        "5 Degrees of exhaustion are shaped by individuals’ perceptions."
+      ],
+      "어휘": "debilitate: 쇠약하게 하다",
+      "답": "2",
+      "해설": "해설"
     }
-}
-      
+  }
+  
